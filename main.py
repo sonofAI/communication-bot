@@ -21,9 +21,8 @@ def forward_message_to_admin(update):
     message = update['message']
     chat_id = message['chat']['id']
     text = message['text']
-    if str(chat_id) != ADMIN_CHAT_ID:
-        forwarded_message = f'From: {chat_id}\n{text}'
-        send_message(ADMIN_CHAT_ID, forwarded_message)
+    forwarded_message = f'From: {chat_id}\n{text}'
+    send_message(ADMIN_CHAT_ID, forwarded_message)
 
 def extract_user_id(text):
     match = re.search(r'From: (\d+)', text)
